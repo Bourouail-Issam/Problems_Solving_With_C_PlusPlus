@@ -32,30 +32,41 @@ short NumberOfDaysInAMonth(short month, short year){
     short NumberDaysinMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
     return (2 == month ? (isLeapYear(year) ? 29 : 28) : NumberDaysinMonth[month - 1]);
 }
-
-void PrintMonthCalendar(short Month, short Year) {
-
+void PrintMonthClander(short month, short year)
+{
     int NumberOfDays;
-    int current = DayOfWeekOrder(1, Month, Year);
-    NumberOfDays = NumberOfDaysInAMonth(Month, Year);
-  
-    printf("\n  _______________%s_______________\n\n", MonthShortName(Month).c_str());
-    printf("  Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
+
+    //index of the day from 0 to 6
+    short current = DayOfWeekOrder(year, month, 1);
+
+    //number Day In Month 28 or 29 or 30 or 31
+    NumberOfDays = NumberOfDaysInAMonth(month, year);
+
+    printf("\n------------------- %s -------------------\n\n",
+        MonthShortName(month).c_str());
+
+    cout << "   Sun   Mon   Tue   Wed   Thu   Fri   Sat  \n\n";
 
     int i;
     for (i = 0; i < current; i++)
-        printf("     ");
-    for (int j = 1; j <= NumberOfDays; j++)
+        cout << "      ";
+
+
+    for (short j = 1; j <= NumberOfDays; j++)
     {
-        printf("%5d", j);
-        if (++i == 7)
-        {
+
+        printf("%6d", j);
+
+        if (++i == 7) {
             i = 0;
-            printf("\n");
+            cout << endl << endl;
         }
+
     }
-    printf("\n  _________________________________\n");
+    cout << "\n\n--------------------------------------------\n\n";
 }
+
+
 void PrintYearCalendar(short year) {
     cout << "\n\n-------------------------------------\n\n";
     cout << "\tCalendar - " << year;
@@ -63,7 +74,7 @@ void PrintYearCalendar(short year) {
 
     for (short i = 1; i <= 12; i++)
     {
-        PrintMonthCalendar(i, year);
+        PrintMonthClander(i, year);
     }
 
 }

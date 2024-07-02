@@ -6,9 +6,7 @@ using namespace std;
 bool SortingWord(vector <string> Words, string Alphabic)
 {
     int WordsL = Words.size();
-    if (WordsL == 1)
-        return true;
-
+    
     if (WordsL == 1)
         return true;
 

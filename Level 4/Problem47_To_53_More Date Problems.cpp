@@ -46,16 +46,15 @@ bool IsDate1BeforeDate2(stMyDate Date1, stMyDate Date2)
 }
 
 short GetDifferenceInDays(stMyDate Date1, stMyDate Date2, bool IncludeEndDay = false) {
-    short Days = 0;
-    short SwapFlagValue = 1;
 
+    short Days = 0;
     
     while (IsDate1BeforeDate2(Date1, Date2))
     {
         Days++;
         Date1 = IncreaseDateByOneDay(Date1);
     }
-    return IncludeEndDay ? ++Days * SwapFlagValue : Days * SwapFlagValue;
+    return IncludeEndDay ? ++Days  : Days ;
 }
 short DayOfWeekOrder(short Day, short Month, short Year)
 {

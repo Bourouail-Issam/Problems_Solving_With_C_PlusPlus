@@ -38,34 +38,39 @@ string MonthShortName(short month)
                          "August","September","October","November","December"};
     return Months[month-1];
 }
+
 void PrintMonthClander(short year, short month)
 {
+    int NumberOfDays;
+
     //index of the day from 0 to 6
     short current = DayOfWeekOrder(year, month, 1);
     
     //number Day In Month 28 or 29 or 30 or 31
-    short numberOfDaysInMonth = NumberDaysInMonth(year, month);
-   
-    string NameMonth = MonthShortName(month);
+     NumberOfDays = NumberDaysInMonth(year, month);
 
-    printf("\n---------------%s---------------\n\n",NameMonth.c_str() );
-    cout << "  Sun  Mon  Tue  Wed  Thu  Fri  Sat  \n\n";
+    printf("\n------------------- %s -------------------\n\n",
+        MonthShortName(month).c_str() );
 
-    for (short i = 0; i < current; i++)
-        cout << "     ";
+    cout << "   Sun   Mon   Tue   Wed   Thu   Fri   Sat  \n\n";
+
+    int i;
+    for (i = 0; i < current; i++)
+        cout << "      ";
     
-    int counter = current;
-    for (short i = 1; i <= numberOfDaysInMonth; i++)
+
+    for (short j = 1; j <= NumberOfDays; j++)
     {
-        counter++;
-        printf("%5d", i);
-        if (counter >= 7) {
-            counter = 0;
+
+        printf("%6d", j);
+
+        if (++i == 7) {
+            i = 0;
             cout << endl<<endl;
         }
         
     }
-    cout << "\n\n------------------------------------";
+    cout << "\n\n--------------------------------------------\n\n";
 }
 
 int main()
@@ -76,5 +81,6 @@ int main()
 
     PrintMonthClander(year,month);
 
+    return 0;
 }
 
